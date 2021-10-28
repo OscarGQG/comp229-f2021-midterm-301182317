@@ -1,3 +1,8 @@
+/* app.js - Funcionality of site.
+Oscar Quispe
+301182317
+10/27/2021*/
+
 // moddules for node and express
 let createError = require('http-errors');
 let express = require('express');

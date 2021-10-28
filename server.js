@@ -1,3 +1,8 @@
+/* server.js - server site.
+Oscar Quispe
+301182317
+10/27/2021*/
+
 let app = require('./server/config/app');
 let debug = require('debug')('comp308-w2019-midterm:server');
 let http = require('http');
