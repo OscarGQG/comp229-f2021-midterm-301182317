@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
-  res.render('books/details', {title: 'Add Book'})
+  res.render('books/add', {title: 'Add Book'})
 
     /*****************
      * ADD CODE HERE *
@@ -36,11 +36,10 @@ router.get('/add', (req, res, next) => {
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
   let newbook = Book({
-    "Title": req.body.Title,
-    "Description":req.body.Description,
-    "Price": req.body.Price,
-    "Author": req.body.Author,
-    "Genre": req.body.Genre,    
+    "title": req.body.title,    
+    "trice": req.body.price,
+    "author": req.body.author,
+    "genre": req.body.genre,    
   });
 
   Book.create(newBook, (err, Book) => {
@@ -51,7 +50,7 @@ router.post('/add', (req, res, next) => {
     }
     else
     {
-      res.redirect('/book-index');
+      res.redirect('/books-index');
     }
   });
 
@@ -73,7 +72,7 @@ router.get('/:id', (req, res, next) => {
     }
     else
     {
-      res.render('book/details', {title: 'Edit Book', book: bookToEdit})
+      res.render('books', {title: 'Edit Book', book: bookToEdit})
     }
   });
 
@@ -88,11 +87,10 @@ router.post('/:id', (req, res, next) => {
 
   let updatedBook = Book({
     "_id": id,
-    "Title": req.body.Title,
-    "Description":req.body.Description,
-    "Price": req.body.Price,
-    "Author": req.body.Author,
-    "Genre": req.body.Genre,     
+    "title": req.body.title,    
+    "price": req.body.price,
+    "author": req.body.author,
+    "genre": req.body.genre,     
   });
 
   Book.updateOne({_id: id}, updatedBook, (err) => {
@@ -103,7 +101,7 @@ router.post('/:id', (req, res, next) => {
     }
     else
     {
-      res.redirect('/book-list');
+      res.redirect('/books-index');
     }
   });
 
@@ -125,7 +123,7 @@ router.get('/delete/:id', (req, res, next) => {
     }
     else
     {
-      res.redirect('/book-index');
+      res.redirect('/books-index');
     }
   });
 
